@@ -54,7 +54,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .topbar a{color:#fff;font-weight:700}
 .site-header{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 2px 0 var(--red),0 4px 16px rgba(24,56,96,.1)}
 .header-in{display:flex;align-items:center;gap:16px;min-height:68px}
-.brand img{height:54px;width:auto}
+.brand img{height:44px;width:auto}
 .nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--g2);display:none;box-shadow:var(--shadow)}
 .nav.open{display:block}
 .nav ul{padding:8px var(--gut) 16px}
@@ -195,7 +195,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--red);b
 .about-grid{display:grid;gap:28px;align-items:center}
 @media(min-width:900px){.about-grid{grid-template-columns:1fr 1.1fr}}
 .about-fig{margin:0;position:relative}
-.about-fig img{width:100%;aspect-ratio:3/2;object-fit:cover;background:#fff;border:1px solid var(--g2);box-shadow:var(--shadow)}
+.about-fig img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 30%;background:#fff;border:1px solid var(--g2);box-shadow:var(--shadow)}
 .about-fig figcaption{background:var(--navy);color:#fff;font-size:.9rem;padding:10px 14px;border-left:6px solid var(--red)}
 .addr{padding:12px 16px;background:var(--g1);border-left:4px solid var(--red)}
 
@@ -247,7 +247,7 @@ input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--red);b
 /* footer */
 .footer{background:var(--navy-d);color:#d5e0ee;padding-top:clamp(40px,6vw,64px);border-top:6px solid var(--red)}
 .foot-grid{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
-.f-brand img{height:84px;width:auto;background:#fff;padding:6px;border-radius:4px;margin-bottom:12px}
+.f-brand img{height:auto;width:min(100%,280px);margin-bottom:12px}
 .footer h2{font:800 .8rem var(--fd);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:12px}
 .footer li{margin-bottom:6px}
 .footer a{color:#d5e0ee;display:inline-block;padding:3px 0}
@@ -289,3 +289,4 @@ input[aria-invalid="true"],select[aria-invalid="true"]{border-color:var(--red);b
   .card .chips{display:none}
   .card .chips:has(a){display:flex}
 }
+@media(min-width:900px){.nav a,.head-phone,.head-cta{white-space:nowrap}.nav a{padding:0 6px;font-size:.78rem}.head-phone strong{font-size:1.05rem}.header-in{gap:10px}.head-cta{padding-inline:22px}}

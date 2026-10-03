@@ -35,83 +35,108 @@
     rev.forEach(function (el, i) { el.style.setProperty('--d', (i % 3) * 0.08 + 's'); io.observe(el); });
   } else { rev.forEach(function (el) { el.classList.add('is-in'); }); }
 
-  /* ---------- coverage ---------- */
-  var AREAS = {
-    CT: { title: 'CT: East Kent, Canterbury and Dover area', towns: [
-      'Dover', 'Deal', 'Folkestone', 'Hythe', 'Canterbury', 'Herne Bay', 'Whitstable', 'Margate', 'Broadstairs', 'Ramsgate', 'Sandwich',
-      'Ash', 'Aylesham', 'Capel-le-Ferne', 'Denton', 'East Langdon', 'Eastry', 'Eythorne', 'Goodnestone', 'Great Mongeham', 'Guston',
-      'Hougham', 'Langdon', 'Lydden', 'Nonington', 'Preston', 'Ringwould'] },
-    ME: { title: 'ME: Medway and North Kent', towns: [
-      'Maidstone', 'Rochester', 'Chatham', 'Gillingham', 'Rainham', 'Medway', 'Aylesford', 'Kings Hill', 'Sittingbourne', 'Faversham'] },
-    DA: { title: 'DA: Dartford and Gravesend', towns: ['Dartford', 'Gravesend', 'West Kingsdown'] },
-    TN: { title: 'TN: West Kent', towns: ['Tonbridge', 'Tunbridge Wells', 'Sevenoaks', 'Cranbrook'] },
-    Ashford: { title: 'Ashford (TN23, TN24, TN25)', towns: ['Ashford'] }
+  /* ---------- coverage (UK map) ---------- */
+  var NATIONS = {
+    all: { title: 'All of the UK, 24/7', cities: null },
+    england: { title: 'England', cities: ['London', 'Birmingham', 'Manchester', 'Leeds', 'Liverpool', 'Sheffield', 'Bristol', 'Newcastle', 'Nottingham', 'Leicester', 'Southampton', 'Plymouth', 'Norwich'] },
+    scotland: { title: 'Scotland', cities: ['Glasgow', 'Edinburgh', 'Aberdeen', 'Inverness'] },
+    wales: { title: 'Wales', cities: ['Cardiff', 'Swansea'] },
+    ni: { title: 'Northern Ireland', cities: ['Belfast'] }
   };
-  var ORDER = ['CT', 'ME', 'DA', 'TN', 'Ashford'];
-  var tabs = $$('#areaTabs [role=tab]'), regions = $$('.region'), chips = $('#chips'),
-      title = $('#areaTitle'), msg = $('#covMsg'), search = $('#townSearch'), panel = $('#chipPanel');
-  var current = 'CT';
+  var tabs = $$('#areaTabs [role=tab]'), pins = $$('#ukMap .pin'), chips = $('#chips'),
+      title = $('#areaTitle'), msg = $('#covMsg'), panel = $('#chipPanel'),
+      tform = $('#townForm'), search = $('#townSearch'), result = $('#townResult');
+  var current = 'all';
 
-  function render(list, withArea) {
+  function render(list) {
     chips.innerHTML = '';
-    list.forEach(function (t) {
-      var li = document.createElement('li');
-      li.textContent = t.name;
-      if (withArea) { var s = document.createElement('small'); s.textContent = t.area; li.appendChild(s); }
-      chips.appendChild(li);
+    list.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; chips.appendChild(li); });
+  }
+  function markPins(area) {
+    pins.forEach(function (p) {
+      var on = area === 'all' || p.getAttribute('data-nation') === area;
+      p.classList.toggle('on', on);
+      p.classList.toggle('off', !on);
+      p.classList.remove('hit');
     });
   }
   function select(area, focusTab) {
+    if (!NATIONS[area]) area = 'all';
     current = area;
     tabs.forEach(function (t) {
-      var on = t.dataset.area === area;
+      var on = t.getAttribute('data-area') === area;
       t.setAttribute('aria-selected', on ? 'true' : 'false');
       t.tabIndex = on ? 0 : -1;
       if (on) { panel.setAttribute('aria-labelledby', t.id); if (focusTab) t.focus(); }
     });
-    regions.forEach(function (r) { r.classList.toggle('active', r.dataset.area === area); });
-    if (search.value) search.value = '';
-    title.textContent = AREAS[area].title;
-    render(AREAS[area].towns.map(function (n) { return { name: n }; }));
-    msg.textContent = 'We cover all of these, day and night. Also nearby villages: call us if yours is not listed.';
+    markPins(area);
+    title.textContent = NATIONS[area].title;
+    var list = NATIONS[area].cities || pins.map(function (p) { return p.getAttribute('data-city'); });
+    render(list);
+    msg.textContent = area === 'all'
+      ? 'England, Scotland, Wales and Northern Ireland, including all of these cities and everywhere in between.'
+      : 'We cover ' + NATIONS[area].title + ', including these cities and everywhere in between, day and night.';
   }
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t.dataset.area); });
+    t.addEventListener('click', function () { select(t.getAttribute('data-area')); });
     t.addEventListener('keydown', function (e) {
       var n = null;
       if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
       else if (e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
       else if (e.key === 'Home') n = 0;
       else if (e.key === 'End') n = tabs.length - 1;
-      if (n !== null) { e.preventDefault(); select(tabs[n].dataset.area, true); }
+      if (n !== null) { e.preventDefault(); select(tabs[n].getAttribute('data-area'), true); }
     });
   });
-  regions.forEach(function (r) {
-    r.addEventListener('click', function () { select(r.dataset.area); });
-    r.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(r.dataset.area); }
-    });
+
+  /* town / postcode check: any sensible place or postcode is covered */
+  var PC_FULL = /^[A-Z]{1,2}[0-9][A-Z0-9]?\s*[0-9][A-Z]{2}$/i, PC_OUT = /^[A-Z]{1,2}[0-9][A-Z0-9]?$/i;
+  function makeBtn(cls, href, icon, label, ext) {
+    var a = document.createElement('a');
+    a.className = 'btn ' + cls; a.href = href;
+    if (ext) { a.target = '_blank'; a.rel = 'noopener'; }
+    a.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#' + icon + '"/></svg>';
+    a.appendChild(document.createTextNode(label));
+    return a;
+  }
+  function showResult(ok, text) {
+    result.innerHTML = '';
+    result.className = 'town-result ' + (ok ? 'ok' : 'bad');
+    var p = document.createElement('p'); p.textContent = text; result.appendChild(p);
+    if (ok) {
+      var row = document.createElement('div'); row.className = 'tr-cta';
+      row.appendChild(makeBtn('btn-red', 'tel:01304350200', 'i-phone', 'Call 01304 350200'));
+      row.appendChild(makeBtn('btn-ghost', 'https://wa.me/447842290576', 'i-wa', 'WhatsApp', true));
+      result.appendChild(row);
+    }
+  }
+  tform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = search.value.replace(/\s+/g, ' ').trim();
+    search.removeAttribute('aria-invalid');
+    if (!v) {
+      showResult(false, 'Please type your town, city or postcode and we will check it for you.');
+      search.setAttribute('aria-invalid', 'true'); search.focus(); return;
+    }
+    var letters = (v.match(/[A-Za-z\u00C0-\u024F]/g) || []).length;
+    if (letters < 2 || v.length > 60 || /[^A-Za-z\u00C0-\u024F0-9 '\u2019,.\-&()]/.test(v)) {
+      showResult(false, 'Hmm, that doesn\u2019t look like a UK town or postcode. Try something like \u201cLeeds\u201d or a full postcode.');
+      search.setAttribute('aria-invalid', 'true'); search.focus(); return;
+    }
+    var shown = (PC_FULL.test(v) || PC_OUT.test(v)) ? v.toUpperCase() : v;
+    // if it is one of the pinned cities, show it on the map
+    var hit = null;
+    pins.forEach(function (p) { if (p.getAttribute('data-city').toLowerCase() === v.toLowerCase()) hit = p; });
+    if (hit) { select(hit.getAttribute('data-nation')); hit.classList.add('hit'); }
+    showResult(true, 'Yes, Road Max covers ' + shown + ', 24/7. We\'ll send the nearest fitter.');
   });
   search.addEventListener('input', function () {
-    var q = search.value.trim().toLowerCase();
-    if (!q) { select(current); return; }
-    var hits = [];
-    ORDER.forEach(function (a) {
-      AREAS[a].towns.forEach(function (n) { if (n.toLowerCase().indexOf(q) !== -1) hits.push({ name: n, area: a }); });
-    });
-    title.textContent = 'Search results';
-    render(hits, true);
-    msg.textContent = hits.length
-      ? 'Great news, we cover ' + (hits.length === 1 ? 'this area' : 'these areas') + '. Call or WhatsApp for a fitter.'
-      : 'Not in our list, but we cover 170+ Kent towns. Call 01304 350200 to check your exact spot.';
-    if (hits.length === 1) {
-      regions.forEach(function (r) { r.classList.toggle('active', r.dataset.area === hits[0].area); });
-    }
+    if (!search.value.trim()) { result.innerHTML = ''; result.className = 'town-result'; search.removeAttribute('aria-invalid'); }
   });
   $$('[data-area-link]').forEach(function (a) {
-    a.addEventListener('click', function () { select(a.dataset.areaLink); });
+    a.addEventListener('click', function () { select(a.getAttribute('data-area-link')); });
   });
-  select('CT');
+  select('all');
 
   /* ---------- carousel ---------- */
   var track = $('#track');
@@ -168,7 +193,7 @@
       '\nService: ' + g('service') + '\n\nMessage:\n' + (g('message') || '-');
     var url = 'mailto:' + form.dataset.to + '?subject=' + encodeURIComponent('Callback request: ' + g('service') + ' (' + g('postcode') + ')') +
       '&body=' + encodeURIComponent(body);
-    status.textContent = 'Opening your email app. If nothing happens, please email info@k1dovertyres.co.uk or call 01304 350200.';
+    status.textContent = 'Opening your email app. If nothing happens, please email info@roadmax.co.uk or call 01304 350200.';
     window.location.href = url;
   });
 })();

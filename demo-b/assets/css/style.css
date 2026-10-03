@@ -509,3 +509,27 @@ body.menu-open .sticky-bar{display:none}
 .topbar a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#ff6b57;text-underline-offset:3px;display:inline-block;padding:.25rem .2rem}
 .topbar a:hover{text-decoration-color:#fff}
 .topbar :focus-visible{outline-color:#fff}
+
+/* ===== Road Max rebrand: logos + SVG van ===== */
+.brand img{height:44px;width:auto}
+@media (max-width:420px){.hdr .brand img{height:38px}}
+.foot-logo img{background:none;border-radius:0;padding:0;height:auto;width:min(100%,330px)}
+.hero-art .van-svg{position:relative;width:78%;max-width:none;height:auto;margin:0 0 0 20%;mix-blend-mode:normal;-webkit-mask-image:none;mask-image:none;overflow:visible}
+.hero-art .hero-wheel{width:36%}
+.van-drive{animation:vanin 1.6s cubic-bezier(.12,.7,.2,1) both .15s}
+.vw{transform-box:fill-box;transform-origin:center;animation:vwroll 1.6s cubic-bezier(.12,.7,.2,1) both .15s}
+@keyframes vanin{from{transform:translateX(90px);opacity:0}25%{opacity:1}to{transform:none;opacity:1}}
+@keyframes vwroll{from{transform:rotate(140deg)}to{transform:none}}
+@media (max-width:699px){.hero-art .hero-wheel{width:30%}}
+@media (prefers-reduced-motion:reduce){.van-drive,.vw{animation:none}}
+
+.hero-art .van-svg{width:76%;margin:0 0 9% 22%}
+.hero-art .hero-wheel{width:34%}
+@media (max-width:699px){.hero-art .van-svg{margin-bottom:6%}}
+@media (min-width:1000px){.foot-grid{grid-template-columns:1.5fr 1fr 1.2fr 1fr}}
+.foot-logo{display:inline-block;margin-bottom:.4rem}
+@media (min-width:800px){.town-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stats-grid{align-items:end}
+.st.st-wide b{font-size:clamp(2.1rem,6vw,3.3rem)}
+@media (min-width:1000px){.stats-grid{grid-template-columns:1fr 1fr 1.4fr 1fr 1fr 1fr}.st.st-wide b{font-size:clamp(2rem,3.5vw,3.3rem)}}
+@media (max-width:699px){.hero-art .van-svg{width:74%;margin:0 0 8% 25%}.hero-art .hero-wheel{width:26%}}

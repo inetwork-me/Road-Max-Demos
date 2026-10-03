@@ -59,12 +59,13 @@
   /* Count-up */
   function run(el) {
     var to = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0;
-    if (reduce) { el.textContent = to.toFixed(dec); return; }
+    var fmt = function (n) { return dec ? n.toFixed(dec) : Math.round(n).toLocaleString('en-GB'); };
+    if (reduce) { el.textContent = fmt(to); return; }
     var start = null;
     function step(ts) {
       if (!start) start = ts;
       var p = Math.min((ts - start) / 1500, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = (to * e).toFixed(dec);
+      el.textContent = fmt(to * e);
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -159,7 +160,7 @@
       if (!loc) { $('wErr2').hidden = false; $('w-loc').focus(); return; }
       $('wErr2').hidden = true;
       var size = $('w-size').value.trim();
-      var msg = 'Hi K1 Dover Tyres, I need help: ' + chosen + '. Location: ' + loc + '.' + (size ? ' Tyre size / reg: ' + size + '.' : '');
+      var msg = 'Hi Road Max, I need help: ' + chosen + '. Location: ' + loc + '.' + (size ? ' Tyre size / reg: ' + size + '.' : '');
       $('wSum').textContent = chosen + ' · ' + loc + (size ? ' · ' + size : '');
       $('wWa').href = 'https://wa.me/447842290576?text=' + encodeURIComponent(msg);
       go(3);

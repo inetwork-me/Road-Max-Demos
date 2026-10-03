@@ -32,12 +32,12 @@
   var counts = $$('[data-count]');
   function run(el) {
     var end = parseFloat(el.getAttribute('data-count')), suf = el.getAttribute('data-suffix') || '';
-    if (reduce) { el.textContent = end + suf; return; }
+    if (reduce) { el.textContent = end.toLocaleString('en-GB') + suf; return; }
     var t0 = null, dur = 1600;
     function step(t) {
       if (!t0) t0 = t;
       var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(end * e) + (p === 1 ? suf : '');
+      el.textContent = Math.round(end * e).toLocaleString('en-GB') + (p === 1 ? suf : '');
       if (p < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -148,9 +148,9 @@
     var size = $('#sf-size'), pc = $('#sf-pc'), bad = null;
     var v1 = size.value.trim(), v2 = pc.value.trim();
     if (!setErr(size, v1.length < 5 ? 'Enter your tyre size, for example 205/55 R16.' : '')) bad = bad || size;
-    if (!setErr(pc, !pcRe.test(v2) ? 'Enter a valid UK postcode, for example CT16 2LL.' : '')) bad = bad || pc;
+    if (!setErr(pc, !pcRe.test(v2) ? 'Enter a valid UK postcode, for example M1 1AE.' : '')) bad = bad || pc;
     if (bad) { bad.focus(); return; }
-    var msg = 'Hi K1 Dover Tyres, I need a tyre quote. Tyre size: ' + v1 + '. Postcode: ' + v2.toUpperCase() + '.';
+    var msg = 'Hi Road Max, I need a tyre quote. Tyre size: ' + v1 + '. Postcode: ' + v2.toUpperCase() + '.';
     window.open('https://wa.me/447842290576?text=' + encodeURIComponent(msg), '_blank', 'noopener');
   });
 
@@ -169,7 +169,7 @@
     if (bad.length) { bad[0].focus(); return; }
     var body = 'Name: ' + name.value.trim() + '\nEmail: ' + email.value.trim() + '\nPhone: ' + phone.value.trim() +
       '\nPostcode: ' + pc.value.trim().toUpperCase() + '\nService: ' + svc.value + '\n\nMessage:\n' + (msg.value.trim() || '(none)');
-    var url = 'mailto:info@k1dovertyres.co.uk?subject=' + encodeURIComponent('Callback request: ' + svc.value) + '&body=' + encodeURIComponent(body);
+    var url = 'mailto:info@roadmax.co.uk?subject=' + encodeURIComponent('Callback request: ' + svc.value) + '&body=' + encodeURIComponent(body);
     $('#form-status').textContent = 'Opening your email app with your details. If nothing opens, call 01304 350200 or WhatsApp 07842 290576.';
     window.location.href = url;
   });
