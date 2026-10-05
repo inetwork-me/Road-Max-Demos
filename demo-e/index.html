@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>24/7 Mobile Tyre Fitting Anywhere in the UK | Road Max</title>
+  <meta name="description" content="24/7 mobile tyre fitting, repair and replacement anywhere in the UK: England, Scotland, Wales and Northern Ireland. Home, work or roadside. Call Road Max on 01304 350200.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Road Max | 24/7 Mobile Tyre Fitting Anywhere in the UK">
+  <meta property="og:description" content="Flat tyre or puncture? Road Max comes to you at home, work or the roadside, 24/7, anywhere in the UK.">
+  <meta name="theme-color" content="#0B0B0C">
+  <link rel="icon" type="image/svg+xml" href="assets/images/roadmax-favicon.svg">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
+
+  <!-- Tailwind Play CDN for preview. Replace with a compiled build before going live. -->
+  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('rm-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('no-intro')}catch(e){}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            red: { DEFAULT: '#E31B22', dark: '#C4161D' },
+            navy: { DEFAULT: '#03254F', deep: '#021A39' },
+            ink: { DEFAULT: '#0B0B0C', 2: '#111215', 3: '#17181B' }
+          },
+          fontFamily: {
+            sans: ['Barlow', 'system-ui', 'sans-serif'],
+            display: ['"Barlow Condensed"', 'Barlow', 'sans-serif']
+          },
+          maxWidth: { site: '1240px' }
+        }
+      }
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer components {
+      .label { @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.38em] text-white/60 before:h-px before:w-8 before:bg-red before:content-['']; }
+      .h-display { @apply font-display font-semibold uppercase leading-[0.98] tracking-[0.012em] text-white; }
+      .h2 { @apply h-display text-[32px] sm:text-[38px] lg:text-[44px]; }
+      .btn { @apply relative inline-flex h-12 items-center justify-center gap-2.5 overflow-hidden rounded-full px-6 text-[14px] font-medium uppercase tracking-[0.12em] transition duration-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white; }
+      .btn-red { @apply btn bg-red text-white hover:bg-red-dark; }
+      .btn-ghost { @apply btn text-white ring-1 ring-inset ring-white/35 hover:bg-white hover:text-ink hover:ring-white; }
+      .card { @apply rounded-2xl border border-white/10 bg-white/[0.03]; }
+      .foot-tile { @apply flex items-center gap-4 rounded-2xl bg-white/[0.03] px-4 py-3.5 ring-1 ring-white/10 transition duration-300 hover:-translate-y-0.5 hover:bg-white/[0.06] hover:ring-white/25; }
+      .foot-arrow { @apply shrink-0 text-white/40 transition duration-300 group-hover:translate-x-1 group-hover:text-red; }
+      .foot-head { @apply flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[0.3em] text-white before:h-px before:w-5 before:bg-red before:content-['']; }
+      .foot-link { @apply inline-flex items-center gap-2 transition duration-300 hover:translate-x-1 hover:text-white; }
+      .area { @apply h-display inline-flex w-10 shrink-0 justify-center rounded bg-white/[0.06] py-0.5 text-[11px] text-white/80 ring-1 ring-white/10; }
+      .social { @apply flex h-9 w-9 items-center justify-center rounded-full text-white/80 ring-1 ring-white/15 transition duration-300 hover:-translate-y-0.5 hover:bg-red hover:text-white hover:ring-red; }
+      .link-arrow { @apply inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-red; }
+    }
+  </style>
+  <style>
+    [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+    [data-reveal].is-visible { opacity: 1; transform: none; }
+    .slant { clip-path: polygon(7% 0, 100% 0, 93% 100%, 0 100%); }
+    .outline-num { color: transparent !important; -webkit-text-stroke: 1px rgba(255,255,255,.45); }
+    .spin-slow { animation: spin 22s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { scrollbar-width: none; }
+    details summary::-webkit-details-marker { display: none; }
+
+
+    /* ---------- Road Max logo (single SVG) ---------- */
+    .rm-logo { display: block; width: auto; }
+    @keyframes lg-intro { from { opacity: 0; transform: translateY(12px) scale(.94); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+    .intro-logo { animation: lg-intro 1.1s cubic-bezier(.2,.8,.2,1) .15s both; }
+
+    /* ---------- Intro ---------- */
+    #intro { position: fixed; inset: 0; z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+      background: #0B0B0C; transition: transform 1s cubic-bezier(.76,0,.24,1); }
+    #intro.out { transform: translateY(-100%); }
+    #intro .bar { width: 160px; height: 1px; background: rgba(255,255,255,.15); overflow: hidden; }
+    #intro .bar span { display: block; height: 100%; background: #E31B22; transform-origin: left; animation: lg-bar 2s cubic-bezier(.6,0,.2,1) .2s both; }
+    @keyframes lg-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .no-intro #intro { display: none; }
+
+    /* ---------- Hero headline reveal + parallax ---------- */
+    .reveal-line { display: block; overflow: hidden; padding-bottom: .04em; }
+    .reveal-line > span { display: block; transform: translateY(105%); transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+    .reveal-line:nth-child(2) > span { transition-delay: .12s; }
+    .reveal-line:nth-child(3) > span { transition-delay: .24s; }
+    .hero-in .reveal-line > span { transform: none; }
+    .hero-fade { opacity: 0; transform: translateY(16px); transition: opacity 1s ease .45s, transform 1s ease .45s; }
+    .hero-in .hero-fade { opacity: 1; transform: none; }
+    .hero-img { scale: 1.08; transition: scale 2.4s cubic-bezier(.2,.8,.2,1); will-change: translate; }
+    .hero-in .hero-img { scale: 1.02; }
+
+    /* ---------- Image reveal ---------- */
+    [data-reveal] .reveal-zoom { scale: 1.18; transition: scale 1.8s cubic-bezier(.2,.8,.2,1); }
+    [data-reveal].is-visible .reveal-zoom { scale: 1; }
+
+    /* ---------- Button sheen ---------- */
+    .btn-red::after, .sheen::after { content: ""; position: absolute; inset: 0 auto 0 -60%; width: 40%; transform: skewX(-20deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); transition: left .8s ease; }
+    .btn-red:hover::after, .sheen:hover::after { left: 130%; }
+
+    /* ---------- Film grain ---------- */
+    body::after { content: ""; position: fixed; inset: -50%; z-index: 150; pointer-events: none; opacity: .055;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      animation: grain 1.2s steps(6) infinite; }
+    @keyframes grain { 0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); } 60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); } }
+
+
+    @media (prefers-reduced-motion: reduce) {
+      #intro { display: none; }
+      .intro-logo, body::after { animation: none !important; }
+      .reveal-line > span, .hero-fade { transform: none; opacity: 1; transition: none; }
+      .hero-img, [data-reveal] .reveal-zoom { scale: 1; transition: none; }
+    }
+
+    /* ---------- Logo motion ---------- */
+    @keyframes rm-drop { from { opacity: 0; transform: translateY(-16px) scale(.9); } to { opacity: 1; transform: none; } }
+    @keyframes rm-shine { 0% { transform: translateX(-130%) skewX(-18deg); } 16%, 100% { transform: translateX(160%) skewX(-18deg); } }
+    .logo-tile { position: relative; overflow: hidden; transition: transform .35s ease, box-shadow .35s ease; }
+    /* clip the sheen to the logo artwork itself (the logo sits straight on the dark background) */
+    .logo-tile[style*="--logo"] { -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
+    .logo-tile.is-entering { animation: rm-drop .9s cubic-bezier(.2,.8,.2,1) both; }
+    .logo-tile::after { content: ""; position: absolute; inset: -10% auto -10% 0; width: 45%; pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent); mix-blend-mode: soft-light;
+      transform: translateX(-130%) skewX(-18deg); animation: rm-shine 6.5s ease-in-out 1.4s infinite; }
+    .logo-tile:hover { transform: translateY(-2px); }
+    .logo-tile img { transition: height .35s ease; }
+
+    /* ---------- Icon motion ---------- */
+    @keyframes rm-draw { to { stroke-dashoffset: 0; } }
+    @keyframes rm-spin { to { transform: rotate(360deg); } }
+    @keyframes rm-bounce { 0%, 55%, 100% { transform: translateY(0); } 25% { transform: translateY(-5px); } 40% { transform: translateY(-1px); } }
+    @keyframes rm-flash { 0%, 70%, 100% { opacity: 1; transform: scale(1); } 76% { opacity: .35; transform: scale(.92); } 82% { opacity: 1; transform: scale(1.12); } 88% { transform: scale(1); } }
+    @keyframes rm-drive { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
+    @keyframes rm-ring { 0%, 78%, 100% { transform: rotate(0); } 81% { transform: rotate(-16deg); } 84% { transform: rotate(14deg); } 87% { transform: rotate(-12deg); } 90% { transform: rotate(9deg); } 93% { transform: rotate(-4deg); } 96% { transform: rotate(0); } }
+    @keyframes rm-ping { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
+    @keyframes rm-star { from { opacity: 0; transform: scale(.2) rotate(-40deg); } to { opacity: 1; transform: none; } }
+    @keyframes rm-pop { 0%, 85%, 100% { transform: scale(1); } 90% { transform: scale(1.18); } }
+
+    .js .i-draw { stroke-dasharray: 100; stroke-dashoffset: 100; }
+    .i-draw.is-drawn { animation: rm-draw 1.6s ease forwards; animation-delay: var(--d, 0s); }
+    .i-spin { animation: rm-spin 7s linear infinite; }
+    .i-bounce { animation: rm-bounce 2.8s ease-in-out infinite; }
+    .i-flash { animation: rm-flash 3.6s ease-in-out infinite; }
+    .i-drive { animation: rm-drive 2.6s ease-in-out infinite; }
+    .i-ring { animation: rm-ring 4.5s ease-in-out infinite; transform-origin: 50% 50%; }
+    .i-pop { animation: rm-pop 3.2s ease-in-out infinite; }
+    .group:hover .i-spin { animation-duration: 1.4s; }
+    .ping { position: relative; }
+    .ping::before { content: ""; position: absolute; inset: 0; border-radius: 9999px; border: 1px solid #E31B22; animation: rm-ping 2.2s ease-out infinite; }
+    .js .stars svg { opacity: 0; }
+    .stars.is-on svg { animation: rm-star .55s cubic-bezier(.2,.8,.2,1.4) both; }
+    .stars.is-on svg:nth-child(2) { animation-delay: .08s; } .stars.is-on svg:nth-child(3) { animation-delay: .16s; }
+    .stars.is-on svg:nth-child(4) { animation-delay: .24s; } .stars.is-on svg:nth-child(5) { animation-delay: .32s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-tile, .logo-tile::after, .i-spin, .i-bounce, .i-flash, .i-drive, .i-ring, .i-pop, .ping::before, .stars.is-on svg { animation: none !important; }
+      .js .i-draw { stroke-dashoffset: 0; } .js .stars svg { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .spin-slow { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoRepair",
+    "name": "Road Max",
+    "description": "24/7 mobile tyre fitting, repair and roadside help anywhere in the UK.",
+    "telephone": "+441304350200",
+    "email": "info@roadmax.co.uk",
+    "areaServed": { "@type": "Country", "name": "United Kingdom" },
+    "openingHours": "Mo-Su 00:00-23:59",
+    "foundingDate": "2010",
+    "founder": { "@type": "Person", "name": "Hossain Hamedi" }
+  }
+  </script>
+</head>
+
+<body class="bg-ink font-sans text-[15px] leading-relaxed text-white/75 antialiased md:text-base">
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" class="absolute" aria-hidden="true">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88a9.8 9.8 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-tyre" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="4"/><path d="M12 2.5v5.5M12 16v5.5M2.5 12H8M16 12h5.5" stroke-linecap="round"/></g></symbol>
+    <symbol id="i-repair" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M2 7h12v9H2zM14 10h4l4 3.5V16h-8M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+  </svg>
+
+  <div id="intro" aria-hidden="true">
+    <img class="intro-logo h-auto w-[260px] sm:w-[340px]" src="assets/images/roadmax-logo-white.svg" width="588" height="132" alt="">
+    <span class="bar"><span></span></span>
+    <span class="text-[10px] font-medium uppercase tracking-[0.5em] text-white/50">Est. 2010 · We come to you</span>
+  </div>
+
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ink">Skip to content</a>
+
+  <!-- ===================== HEADER ===================== -->
+  <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-colors duration-300">
+    <div class="mx-auto flex h-20 max-w-site items-center justify-between gap-6 px-5">
+      <a href="#top" id="logo" class="logo-tile is-entering shrink-0" style="--logo:url(assets/images/roadmax-logo-compact-white.svg)" aria-label="Road Max home">
+        <img class="rm-logo h-11 transition-[height] duration-300" src="assets/images/roadmax-logo-compact-white.svg" width="588" height="128" alt="Road Max">
+      </a>
+
+      <nav aria-label="Main" class="hidden items-center gap-8 text-[13px] font-medium uppercase tracking-[0.12em] text-white/80 lg:flex">
+        <a href="#top" class="relative text-white after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:bg-red">Home</a>
+        <a href="#services" class="hover:text-white">Services</a>
+        <a href="#tyres" class="hover:text-white">Tyres</a>
+        <a href="#coverage" class="hover:text-white">Coverage</a>
+        <a href="#reviews" class="hover:text-white">Reviews</a>
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-5">
+        <a href="tel:01304350200" class="hidden items-center gap-3 xl:flex">
+          <span class="ping flex h-10 w-10 items-center justify-center rounded-full ring-1 ring-red/60 text-red"><svg class="i-ring h-[18px] w-[18px]"><use href="#i-phone"/></svg></span>
+          <span class="leading-tight"><span class="block text-[11px] font-semibold text-red">24/7</span><span class="font-display text-lg font-bold tracking-wide text-white">01304 350200</span></span>
+        </a>
+        <a href="tel:01304350200" class="btn-red hidden h-11 sm:inline-flex">Call now</a>
+        <button id="menu-btn" type="button" class="flex h-11 w-11 items-center justify-center rounded-full text-white ring-1 ring-white/30 lg:hidden" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-menu" aria-label="Mobile" class="hidden border-t border-white/10 bg-ink lg:hidden">
+      <div class="mx-auto grid max-w-site px-5 py-3 font-display text-xl font-semibold uppercase tracking-wide text-white">
+        <a href="#top" class="py-3">Home</a>
+        <a href="#services" class="py-3">Services</a>
+        <a href="#tyres" class="py-3">Tyres</a>
+        <a href="#coverage" class="py-3">Coverage</a>
+        <a href="#reviews" class="py-3">Reviews</a>
+        <a href="#about" class="py-3">About</a>
+        <a href="#contact" class="py-3">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section id="top" class="relative isolate flex min-h-[700px] items-center overflow-hidden pb-16 pt-32 md:min-h-[780px] md:pb-24">
+      <div class="absolute inset-0 -z-20 overflow-hidden">
+        <img src="assets/images/hero-gloved-hands.webp" alt="Gloved hands fitting a new tyre to a wheel" class="hero-img h-full w-full object-cover object-[75%_50%] md:object-[70%_50%]" fetchpriority="high">
+      </div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/80 to-ink/10 md:bg-gradient-to-r md:from-ink md:from-[30%] md:via-ink/40 md:to-transparent"></div>
+      <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink to-transparent"></div>
+
+      <div class="mx-auto w-full max-w-site px-5">
+        <div class="max-w-xl pt-40 md:pt-0">
+          <p class="label hero-fade text-white/85"><span><span class="text-red">24/7</span> mobile tyre fitting anywhere in the UK</span></p>
+          <h1 class="h-display mt-6 text-[44px] sm:text-[58px] lg:text-[70px]">
+            <span class="reveal-line"><span>Flat tyre?</span></span>
+            <span class="reveal-line"><span>Puncture?</span></span>
+            <span class="reveal-line"><span class="italic text-red">We come to you.</span></span>
+          </h1>
+          <p class="hero-fade mt-6 max-w-md text-base font-light text-white/80 md:text-lg">Home, work or roadside. Day or night, 365 days a year, anywhere in England, Scotland, Wales and Northern Ireland.</p>
+
+          <div class="hero-fade mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="tel:01304350200" class="sheen group relative inline-flex items-center gap-3.5 overflow-hidden rounded-xl bg-red px-5 py-3 text-white transition hover:bg-red-dark">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/15"><svg class="i-ring h-5 w-5"><use href="#i-phone"/></svg></span>
+              <span class="leading-tight"><span class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80">Call now</span><span class="font-display text-[26px] font-bold tracking-wide">01304 350200</span></span>
+            </a>
+            <a href="https://wa.me/447842290576" class="group inline-flex items-center gap-3.5 rounded-xl bg-white/5 px-5 py-3 text-white ring-1 ring-inset ring-white/35 backdrop-blur transition hover:bg-white/10">
+              <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10"><svg class="i-pop h-5 w-5 text-[#25D366]"><use href="#i-whatsapp"/></svg></span>
+              <span class="leading-tight"><span class="block text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70">WhatsApp</span><span class="font-display text-[22px] font-bold tracking-wide">Send your location</span></span>
+            </a>
+          </div>
+
+          <ul class="hero-fade mt-10 grid max-w-lg grid-cols-2 gap-x-6 gap-y-4 text-[13px] leading-tight text-white/75 sm:grid-cols-4">
+            <li class="flex items-center gap-2.5"><svg class="h-6 w-6 shrink-0 text-red i-draw i-flash"><use href="#i-bolt"/></svg><span><strong class="block font-semibold text-white">24/7</strong>Call-outs</span></li>
+            <li class="flex items-center gap-2.5"><svg class="h-6 w-6 shrink-0 text-red i-draw i-bounce"><use href="#i-pin"/></svg><span><strong class="block font-semibold text-white">Mobile</strong>We come to you</span></li>
+            <li class="flex items-center gap-2.5"><svg class="h-6 w-6 shrink-0 text-red i-draw i-spin"><use href="#i-tyre"/></svg><span><strong class="block font-semibold text-white">Quality tyres</strong>Major brands</span></li>
+            <li class="flex items-center gap-2.5"><svg class="h-6 w-6 shrink-0 text-red i-draw"><use href="#i-clock"/></svg><span><strong class="block font-semibold text-white">365 days</strong>Incl. holidays</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST BAND ===================== -->
+    <section aria-label="Why drivers trust Road Max"class="border-y border-white/10 bg-ink-2">
+      <div class="mx-auto grid max-w-site grid-cols-2 gap-y-6 px-5 py-7 md:grid-cols-5 md:divide-x md:divide-white/10">
+        <a href="#reviews" class="col-span-2 flex items-center gap-4 md:col-span-1 md:pr-6">
+          <span class="h-display text-[40px] text-white">4.9</span>
+          <span class="text-[12px] leading-tight"><span class="h-display block text-[15px]">Trusted UK-wide</span><span class="stars mt-1 flex text-red"><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg><svg class="h-3.5 w-3.5"><use href="#i-star"/></svg></span>292 Google reviews</span>
+        </a>
+        <div class="flex items-center gap-3 md:justify-center"><svg class="h-8 w-8 shrink-0 text-red i-draw"><use href="#i-clock"/></svg><span class="h-display text-[15px] leading-tight">24/7<br><span class="text-white/60">Available</span></span></div>
+        <div class="flex items-center gap-3 md:justify-center"><svg class="h-8 w-8 shrink-0 text-red i-draw i-bounce"><use href="#i-pin"/></svg><span class="h-display text-[15px] leading-tight">Covering<br><span class="text-white/60">The whole UK</span></span></div>
+        <div class="flex items-center gap-3 md:justify-center"><svg class="h-8 w-8 shrink-0 text-red i-draw i-spin"><use href="#i-tyre"/></svg><span class="h-display text-[15px] leading-tight">All major<br><span class="text-white/60">Tyre brands</span></span></div>
+        <div class="flex items-center gap-3 md:justify-center"><svg class="h-8 w-8 shrink-0 text-red i-draw i-drive"><use href="#i-truck"/></svg><span class="h-display text-[15px] leading-tight">Since 2010<br><span class="text-white/60">15 yrs experience</span></span></div>
+      </div>
+    </section>
+
+<!-- ===================== ABOUT ===================== -->
+    <section id="about" class="scroll-mt-20 border-t border-white/10 bg-ink-2" aria-labelledby="about-title">
+      <div class="mx-auto grid max-w-site items-center gap-14 px-5 py-24 md:py-32 lg:grid-cols-2">
+        <div data-reveal>
+          <p class="label">About Road Max</p>
+          <h2 id="about-title" class="h2 mt-4">Founded in 2010.<br><span class="text-red">Trusted UK-wide.</span></h2>
+          <p class="mt-6 max-w-lg">Road Max was founded in 2010 by Hossain Hamedi on a simple promise: answer the phone, come out and fix the problem, whether it's 2am on a motorway hard shoulder or a Sunday-evening blowout on the driveway. Fifteen years on, that same promise covers drivers in England, Scotland, Wales and Northern Ireland, and we dispatch the nearest fitter to you.</p>
+          <dl class="mt-9 grid max-w-lg grid-cols-3 gap-6 border-t border-white/10 pt-7">
+            <div><dt class="text-[13px]">Established</dt><dd class="h-display mt-1 text-3xl">2010</dd></div>
+            <div><dt class="text-[13px]">Happy customers</dt><dd class="h-display mt-1 text-3xl">10k+</dd></div>
+            <div><dt class="text-[13px]">Google rating</dt><dd class="h-display mt-1 text-3xl">4.9<span class="text-red">★</span></dd></div>
+          </dl>
+          <a href="#services" class="btn-ghost mt-9 h-11">Our services<svg class="h-4 w-4"><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="relative h-[360px] sm:h-[460px]" data-reveal>
+          <div class="slant absolute left-0 top-0 h-full w-[51%] overflow-hidden">
+            <img src="assets/images/about-tyre-truck.webp" alt="A mobile tyre truck stocked with tyres and fitting equipment" class="reveal-zoom h-full w-full object-cover" loading="lazy">
+          </div>
+          <div class="slant absolute top-0 h-full w-[51%] overflow-hidden" style="left:48.9%">
+            <img src="assets/images/about-workshop-wheel.webp" alt="A fitter handling a wheel and tyre" class="reveal-zoom h-full w-full object-cover" loading="lazy">
+          </div>
+          <div class="absolute -bottom-8 -left-3 flex h-28 w-28 shadow-2xl items-center justify-center rounded-full bg-ink ring-1 ring-white/15">
+            <svg class="spin-slow absolute inset-0 h-full w-full" viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="ring" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+              <text fill="rgba(255,255,255,.7)" font-size="9.5" font-family="Barlow" letter-spacing="3.2"><textPath href="#ring">ROAD MAX · UK-WIDE · 24/7 · </textPath></text>
+            </svg>
+            <span class="h-display text-2xl text-red">24/7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section id="services" class="relative scroll-mt-20 overflow-hidden border-t border-white/10" aria-labelledby="services-title">
+      <div class="mx-auto max-w-site px-5 py-24 md:py-32">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end" data-reveal>
+          <div>
+            <p class="label">Our services</p>
+            <h2 id="services-title" class="h2 mt-4">Mobile services<br>at your location</h2>
+          </div>
+          <p class="max-w-md">From puncture repairs to full tyre replacement and roadside help, we come to you anywhere in the UK, 24/7.</p>
+        </div>
+
+        <div class="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-4 md:gap-y-4 md:overflow-visible md:px-0">
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/tyre-stock.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover object-[40%_40%] brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">01</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Mobile tyre fitting</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">At your home, work or the roadside.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/fitting-late-night.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover object-[50%_75%] brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">02</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Emergency tyre fitting</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Urgent, on-site replacement at any hour.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-repair.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">03</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Mobile tyre repair</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Punctures and flats fixed on the spot.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-jump.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">04</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Jump starts</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Running again, 24/7, wherever you are.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-recovery.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">05</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Breakdown recovery</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Roadside assistance and vehicle transport.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-battery.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover object-[30%_50%] brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">06</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Battery replacement</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">On-site, for cars, vans and SUVs.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-wheelnut.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">07</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Wheel nut removal</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Stuck and locking nuts, removed without damage.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+          <a href="#contact" class="slant group relative block h-[360px] w-[260px] shrink-0 snap-start overflow-hidden bg-ink-3 md:w-auto" data-reveal>
+            <img src="assets/images/hd-partworn.webp" alt="" class="reveal-zoom absolute inset-0 h-full w-full object-cover brightness-[.85] transition duration-700 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 px-9 pb-7">
+              <span class="font-display text-lg italic text-white/60">08</span>
+              <h3 class="h-display mt-1 text-[22px] text-red">Part-worn tyres</h3>
+              <p class="mt-2 text-[13px] leading-snug text-white/75">Quality-checked, legal and fitted where you are.</p>
+              <span class="mt-4 flex h-8 w-8 items-center justify-center rounded-full text-white ring-1 ring-white/40 transition group-hover:bg-red group-hover:ring-red"><svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <section class="relative isolate overflow-hidden border-t border-white/10 bg-ink-2" aria-labelledby="steps-title">
+      <img src="assets/images/premium-tread-v.webp" alt="" class="absolute -right-24 top-0 -z-10 hidden h-full w-[46%] object-cover opacity-30 grayscale lg:block" loading="lazy">
+      <div class="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink-2 via-ink-2 to-transparent lg:block"></div>
+      <div class="mx-auto max-w-site px-5 py-24 md:py-32">
+        <div data-reveal>
+          <p class="label">How it works</p>
+          <h2 id="steps-title" class="h2 mt-4">Back on the road<br>in 4 simple steps</h2>
+        </div>
+        <ol class="mt-12 grid gap-4 sm:grid-cols-2 lg:max-w-4xl lg:grid-cols-4">
+          <li class="card p-6" data-reveal>
+            <span class="outline-num h-display text-5xl">01</span>
+            <h3 class="h-display mt-5 text-lg">Your vehicle</h3>
+            <p class="mt-2 text-[13px] leading-snug">Your tyre size or registration, so we bring the right tyres.</p>
+          </li>
+          <li class="card p-6" data-reveal>
+            <span class="outline-num h-display text-5xl">02</span>
+            <h3 class="h-display mt-5 text-lg">Your location</h3>
+            <p class="mt-2 text-[13px] leading-snug">Share a postcode or live pin: home, work or roadside.</p>
+          </li>
+          <li class="card p-6" data-reveal>
+            <span class="outline-num h-display text-5xl">03</span>
+            <h3 class="h-display mt-5 text-lg">Your tyre</h3>
+            <p class="mt-2 text-[13px] leading-snug">Choose premium, mid-range or budget to suit your needs.</p>
+          </li>
+          <li class="card border-red/40 p-6" data-reveal>
+            <span class="h-display text-5xl text-red">04</span>
+            <h3 class="h-display mt-5 text-lg">Back on the road</h3>
+            <p class="mt-2 text-[13px] leading-snug">We repair or replace your tyres where you are.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== TYRES & BRANDS ===================== -->
+    <section id="tyres" class="relative isolate scroll-mt-20 overflow-hidden border-t border-white/10" aria-labelledby="tyres-title">
+      <img src="assets/images/tyres-stack.webp" alt="" class="absolute inset-0 -z-20 h-full w-full object-cover opacity-30" loading="lazy">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-b from-ink via-ink/70 to-ink"></div>
+      <div class="mx-auto grid max-w-site gap-14 px-5 py-24 md:py-32 lg:grid-cols-12">
+        <div class="lg:col-span-5" data-reveal>
+          <p class="label">Tyres &amp; brands</p>
+          <h2 id="tyres-title" class="h2 mt-4">Premium, mid-range<br><span class="text-red">&amp; budget tyres</span></h2>
+          <p class="mt-6">We supply and fit tyres for cars, vans and 4x4s. Every price includes fitting, a new valve, wheel balancing and disposal of your old tyre, so the figure we quote is the figure you pay.</p>
+          <a href="tel:01304350200" class="btn-red mt-8">Call for a quote<svg class="h-4 w-4"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="lg:col-span-7" data-reveal>
+          <ul class="flex flex-wrap items-center gap-x-9 gap-y-4 border-b border-white/10 pb-8 font-display text-2xl font-bold uppercase italic tracking-wide text-white/80">
+            <li>Michelin</li><li>Bridgestone</li><li>Continental</li><li>Goodyear</li><li>Pirelli</li><li>Dunlop</li>
+          </ul>
+          <ul class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <li class="card p-4"><h3 class="h-display text-base">Car tyres</h3><p class="mt-1 text-[13px]">Summer, winter &amp; all-season</p></li>
+            <li class="card p-4"><h3 class="h-display text-base">Van tyres</h3><p class="mt-1 text-[13px]">Van &amp; commercial</p></li>
+            <li class="card p-4"><h3 class="h-display text-base">4×4 &amp; SUV</h3><p class="mt-1 text-[13px]">For larger vehicles</p></li>
+            <li class="card p-4"><h3 class="h-display text-base">Performance</h3><p class="mt-1 text-[13px]">Including run-flat</p></li>
+          </ul>
+          <div class="card mt-3 flex items-center gap-4 p-4">
+            <svg class="h-6 w-6 shrink-0 text-red i-draw"><use href="#i-check"/></svg>
+            <p class="text-[13px]"><strong class="font-semibold text-white">Part-worn tyres available across the UK.</strong> Quality checked to BS AU 159 and legal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== COVERAGE ===================== -->
+    <section id="coverage" class="scroll-mt-20 border-t border-white/10 bg-ink-2" aria-labelledby="coverage-title">
+      <div class="mx-auto grid max-w-site items-center gap-12 px-5 py-24 md:py-32 lg:grid-cols-12">
+        <div class="lg:col-span-5" data-reveal>
+          <p class="label">Areas we cover</p>
+          <h2 id="coverage-title" class="h2 mt-4">Anywhere<br><span class="text-red">in the UK</span></h2>
+          <p class="mt-6">England, Scotland, Wales and Northern Ireland, 24/7. We dispatch the nearest fitter to you, including London, Birmingham, Manchester, Leeds, Glasgow, Edinburgh, Cardiff, Belfast and everywhere in between. Enter your postcode or town to check.</p>
+          <form id="postcode-form" class="mt-8" novalidate>
+            <label for="postcode" class="sr-only">Your postcode or town</label>
+            <div class="flex rounded-full bg-white/5 p-1.5 ring-1 ring-white/15 focus-within:ring-white/50">
+              <svg class="ml-3 h-5 w-5 shrink-0 self-center text-white/50 i-draw i-bounce"><use href="#i-pin"/></svg>
+              <input id="postcode" type="text" autocomplete="postal-code" placeholder="Postcode or town, e.g. LS1 or Leeds" class="min-w-0 flex-1 bg-transparent px-3 text-white placeholder:text-white/40 focus:outline-none" aria-describedby="postcode-result">
+              <button type="submit" class="btn-red h-10 px-5">Check</button>
+            </div>
+            <p id="postcode-result" class="mt-4 hidden text-sm" role="status" aria-live="polite"></p>
+          </form>
+          <a href="tel:01304350200" class="btn-ghost mt-8 h-11">Call 01304 350200<svg class="h-4 w-4"><use href="#i-arrow"/></svg></a>
+        </div>
+
+        <div class="relative mt-6 lg:col-span-7 lg:mt-0" data-reveal>
+          <div class="absolute -top-12 left-0 inline-flex items-center gap-2.5 rounded-full bg-white/5 px-3.5 py-1.5 text-[12px] font-medium uppercase tracking-[0.2em] text-white/80 ring-1 ring-white/15"><span class="ping relative h-2 w-2 rounded-full bg-red"></span>Covering the whole UK · 24/7</div>
+          <div class="relative mx-auto max-w-[560px]">
+          <svg id="live-map" class="block h-auto w-full" viewBox="-64 0 460 600" role="img" aria-label="Animated map of the UK showing Road Max coverage across England, Scotland, Wales and Northern Ireland">
+            <defs>
+              <radialGradient id="glow"><stop offset="0" stop-color="#E31B22" stop-opacity=".45"/><stop offset="1" stop-color="#E31B22" stop-opacity="0"/></radialGradient>
+              <style>
+                #live-map .land { fill: rgba(255,255,255,.035); stroke: rgba(255,255,255,.35); stroke-width: .8; stroke-linejoin: round; stroke-dasharray: var(--len, 4000); stroke-dashoffset: var(--len, 4000); }
+                #live-map.on .land { animation: lm-draw 3.5s ease forwards; }
+                #live-map .town { fill: #fff; opacity: .55; transform-box: fill-box; transform-origin: center; animation: lm-twinkle 4s ease-in-out infinite; }
+                #live-map .town.hit { fill: #E31B22; opacity: 1; animation: lm-beat 1.2s ease-in-out infinite; }
+                #live-map .route { fill: none; stroke: #E31B22; stroke-width: .9; stroke-opacity: .75; stroke-dasharray: 3 5; animation: lm-flow 1.6s linear infinite; }
+                #live-map .runner { fill: #fff; filter: drop-shadow(0 0 3px #E31B22); }
+                #live-map .dest { fill: none; stroke: #E31B22; stroke-width: .9; opacity: .8; }
+                #live-map .ping { fill: none; stroke: #E31B22; stroke-width: 1.1; transform-box: fill-box; transform-origin: center; opacity: 0; animation: lm-ping 4.4s ease-out infinite; }
+                #live-map .core { transform-box: fill-box; transform-origin: center; animation: lm-beat 1.6s ease-in-out infinite; }
+                #live-map .hub.hit .core { animation-duration: .7s; }
+                @keyframes lm-draw { to { stroke-dashoffset: 0; } }
+                @keyframes lm-twinkle { 0%, 100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.25); } }
+                @keyframes lm-flow { to { stroke-dashoffset: -16; } }
+                @keyframes lm-ping { 0% { transform: scale(.3); opacity: .9; } 100% { transform: scale(6); opacity: 0; } }
+                @keyframes lm-beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+                @media (prefers-reduced-motion: reduce) {
+                  #live-map .land { stroke-dashoffset: 0; animation: none; }
+                  #live-map .town, #live-map .route, #live-map .ping, #live-map .core { animation: none; }
+                  #live-map .runner { display: none; }
+                }
+              </style>
+            </defs>
+            <path class="land" d="M182 501 180 504 173 506 163 514 155 512 149 506 145 503 143 503 138 504 134 504 136 501 139 499 133 498 129 495 123 495 114 501 107 497 105 495 104 489 103 488 105 484 108 482 114 479 130 471 137 464 142 453 140 452 139 449 140 444 138 438 138 433 130 434 123 438 120 439 120 437 122 434 129 428 133 421 138 417 147 412 152 413 159 410 162 410 169 415 167 408 170 406 175 412 176 413 180 412 175 410 170 401 170 397 174 390 171 387 171 381 175 378 177 368 176 366 172 366 169 369 167 369 162 363 155 351 154 346 158 335 164 328 171 325 159 324 155 325 152 328 148 329 143 334 137 334 135 331 134 331 126 335 116 331 114 335 113 339 110 335 106 330 105 327 105 323 107 322 109 323 112 315 119 300 121 296 120 293 119 291 114 286 115 276 116 273 123 273 115 267 117 261 113 268 108 270 107 273 105 273 104 276 103 270 104 266 111 257 99 269 98 271 99 279 99 282 94 302 91 305 88 305 87 303 90 290 95 280 93 281 92 280 92 267 94 263 94 256 99 242 101 240 101 237 105 230 91 242 84 240 82 238 81 233 78 233 76 232 79 229 84 228 88 225 84 222 88 219 92 211 93 204 90 199 86 197 85 194 87 190 93 188 90 187 88 183 89 176 92 170 100 170 102 169 106 170 98 160 100 156 100 151 110 150 108 146 109 136 110 134 113 133 117 134 119 137 126 134 128 137 136 134 158 131 164 129 170 130 169 137 169 142 166 147 142 166 140 172 144 172 146 173 139 181 137 186 142 186 160 179 163 179 171 181 176 180 195 181 201 180 204 181 207 184 210 192 202 203 200 211 195 224 190 231 187 236 182 242 179 244 171 246 163 250 176 249 183 253 182 256 179 259 173 259 167 265 161 268 151 266 148 265 153 269 171 272 177 268 184 268 198 275 208 287 213 292 221 321 226 338 229 341 244 349 253 361 262 369 259 371 258 374 261 383 268 396 265 395 262 394 256 389 250 391 244 390 249 392 255 392 268 404 273 411 275 420 273 424 266 433 273 439 276 438 281 430 286 430 293 431 297 431 307 434 315 441 317 445 318 456 312 477 308 482 305 484 302 483 303 490 301 492 298 493 294 491 287 496 292 498 293 500 292 504 289 506 280 508 277 510 280 509 283 509 285 514 292 515 303 514 308 515 307 525 306 526 296 532 294 538 288 538 285 540 281 542 274 546 271 547 258 544 250 544 240 547 237 546 229 542 225 542 221 540 223 544 218 548 207 549 202 549 204 554 202 555 192 553 191 554 190 555 186 555 179 550 175 549 172 549 160 554 157 558 154 570 151 574 148 575 144 572 135 566 132 568 126 569 119 572 110 579 107 585 104 586 101 583 97 582 92 584 91 583 90 580 93 577 100 574 106 567 110 561 114 559 115 556 123 546 125 535 132 533 136 524 146 522 153 522 161 524 168 523 171 521 176 513 190 495ZM135 411 137 412 140 412 139 414 130 421 128 419 127 419 124 415 124 408 127 406 132 406ZM186 99 182 99 184 96 186 95 190 95 190 97ZM232 31 231 31 228 26 231 20 233 20 234 22 234 23 232 24ZM224 30 225 33 226 32 229 36 232 34 227 58 224 64 223 63 225 52 225 50 224 48 219 49 218 46 214 46 213 43 216 42 218 43 222 40 220 33 216 32 221 26 222 26 224 26ZM240 15 239 22 236 22 235 19 236 15 238 15 239 14ZM167 122 164 122 161 119 160 116 164 116 166 121ZM174 125 173 124 171 120 175 120ZM170 109 170 111 178 112 179 113 178 116 176 117 172 114 166 115 165 111 163 113 162 112 161 108 163 104 164 103 167 104 171 106 172 108ZM180 101 178 102 177 101 176 98 172 95 171 93 173 93 176 96 178 98 181 99ZM61 239 59 239 59 238 62 235 65 234ZM107 299 103 299 101 297 99 290 101 285 103 285 106 287 107 292ZM87 251 75 254 70 254 70 253 71 252 74 251 76 244 70 240 71 237 74 236 77 235 79 237 82 241 85 242 87 244ZM76 273 78 286 77 288 72 290 71 290 72 287 71 284 71 282 70 282 65 286 66 280 68 276 70 277ZM81 279 79 280 78 275 79 274 83 271 81 270 82 267 86 264 88 263ZM74 145 70 154 68 154 67 156 63 159 67 159 68 160 67 163 62 167 59 169 55 173 54 173 51 177 49 176 47 174 54 168 47 164 50 161 46 159 47 154 49 152 53 154 55 153 58 154 56 149 56 148 73 137 74 141ZM71 219 69 219 67 216 70 214 72 216ZM76 190 75 195 76 200 78 202 84 203 89 202 90 203 89 206 81 214 79 214 79 206 75 207 70 206 66 199 59 198 56 193 58 191 60 191 62 190 61 187 68 185 69 181 71 181 72 182 75 186ZM43 181 46 184 44 189 39 189 33 185 35 182 41 182ZM42 211 39 211 37 210 36 205 37 197 41 197ZM36 219 33 219 33 216 35 216 37 217ZM73 371 71 371 68 372 60 372 60 367 59 366 55 364 53 361 53 358 51 356 48 354 43 360 44 363 39 368 38 369 37 368 31 368 28 366 23 364 22 360 15 354 14 351 17 348 26 344 26 343 22 340 21 339 22 338 26 338 32 335 35 329 38 321 42 318 44 320 46 320 48 318 51 313 58 312 65 310 76 311 79 315 80 321 84 327 89 332 89 335 84 339 84 342 88 340 93 340 94 343 96 349 96 352 93 348 90 346 91 350 90 355 94 356 92 361 85 363 82 371 79 373 76 372ZM232 551 229 552 227 555 226 556 224 556 218 552 216 552 218 550 222 548 224 546 229 548Z"/>
+            <circle cx="180" cy="380" r="110" fill="none" stroke="#E31B22" stroke-opacity="0.4" stroke-width=".8" stroke-dasharray="1.5 4"/><circle cx="180" cy="380" r="210" fill="none" stroke="#E31B22" stroke-opacity="0.22" stroke-width=".8" stroke-dasharray="1.5 4"/><circle cx="180" cy="380" r="320" fill="none" stroke="#E31B22" stroke-opacity="0.12" stroke-width=".8" stroke-dasharray="1.5 4"/><circle cx="180" cy="380" r="440" fill="none" stroke="#E31B22" stroke-opacity="0.06" stroke-width=".8" stroke-dasharray="1.5 4"/>
+            <circle class="ping" cx="260.4" cy="507.4" r="8" style="animation-delay:0.00s"/><circle class="ping" cx="260.4" cy="507.4" r="8" style="animation-delay:2.20s"/><circle class="ping" cx="206.2" cy="455.6" r="8" style="animation-delay:0.63s"/><circle class="ping" cx="206.2" cy="455.6" r="8" style="animation-delay:2.83s"/><circle class="ping" cx="195.4" cy="403" r="8" style="animation-delay:1.26s"/><circle class="ping" cx="195.4" cy="403" r="8" style="animation-delay:3.46s"/><circle class="ping" cx="214.6" cy="323.7" r="8" style="animation-delay:1.89s"/><circle class="ping" cx="214.6" cy="323.7" r="8" style="animation-delay:4.09s"/><circle class="ping" cx="133.6" cy="276.9" r="8" style="animation-delay:2.52s"/><circle class="ping" cx="133.6" cy="276.9" r="8" style="animation-delay:0.32s"/><circle class="ping" cx="166.6" cy="508.8" r="8" style="animation-delay:3.15s"/><circle class="ping" cx="166.6" cy="508.8" r="8" style="animation-delay:0.95s"/><circle class="ping" cx="82.1" cy="343.9" r="8" style="animation-delay:3.78s"/><circle class="ping" cx="82.1" cy="343.9" r="8" style="animation-delay:1.58s"/>
+            <path id="r0" class="route" d="M260.4,507.4 Q233.8,514.6 221.1,539" style="animation-delay:0.00s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.40s" begin="0.00s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r0"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.40s" begin="0.00s" repeatCount="indefinite"/></circle><circle class="dest" cx="221.1" cy="539" r="3.6"/><path id="r1" class="route" d="M260.4,507.4 Q269.2,468.0 304.1,447.9" style="animation-delay:0.15s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.65s" begin="0.45s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r1"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.65s" begin="0.45s" repeatCount="indefinite"/></circle><circle class="dest" cx="304.1" cy="447.9" r="3.6"/><path id="r2" class="route" d="M206.2,455.6 Q183.5,478.2 184.8,510.2" style="animation-delay:0.30s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.90s" begin="0.90s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r2"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.90s" begin="0.90s" repeatCount="indefinite"/></circle><circle class="dest" cx="184.8" cy="510.2" r="3.6"/><path id="r3" class="route" d="M206.2,455.6 Q212.0,438.3 228.7,430.8" style="animation-delay:0.45s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.15s" begin="1.35s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r3"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.15s" begin="1.35s" repeatCount="indefinite"/></circle><circle class="dest" cx="228.7" cy="430.8" r="3.6"/><path id="r4" class="route" d="M195.4,403 Q209.8,399.2 216.7,386" style="animation-delay:0.60s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.40s" begin="1.80s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r4"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.40s" begin="1.80s" repeatCount="indefinite"/></circle><circle class="dest" cx="216.7" cy="386" r="3.6"/><path id="r5" class="route" d="M195.4,403 Q184.7,410.0 172.4,406.8" style="animation-delay:0.75s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.65s" begin="2.25s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r5"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.65s" begin="2.25s" repeatCount="indefinite"/></circle><circle class="dest" cx="172.4" cy="406.8" r="3.6"/><path id="r6" class="route" d="M214.6,323.7 Q201.8,287.3 166.3,272.1" style="animation-delay:0.90s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.40s" begin="2.70s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r6"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.40s" begin="2.70s" repeatCount="indefinite"/></circle><circle class="dest" cx="166.3" cy="272.1" r="3.6"/><path id="r7" class="route" d="M133.6,276.9 Q115.3,234.0 134.5,191.5" style="animation-delay:1.05s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.65s" begin="3.15s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r7"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.65s" begin="3.15s" repeatCount="indefinite"/></circle><circle class="dest" cx="134.5" cy="191.5" r="3.6"/><path id="r8" class="route" d="M133.6,276.9 Q181.7,257.4 199.9,208.8" style="animation-delay:1.20s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="2.90s" begin="3.60s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r8"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="2.90s" begin="3.60s" repeatCount="indefinite"/></circle><circle class="dest" cx="199.9" cy="208.8" r="3.6"/><path id="r9" class="route" d="M166.6,508.8 Q153.2,510.3 143.1,501.4" style="animation-delay:1.35s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.15s" begin="0.05s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r9"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.15s" begin="0.05s" repeatCount="indefinite"/></circle><circle class="dest" cx="143.1" cy="501.4" r="3.6"/><path id="r10" class="route" d="M166.6,508.8 Q138.9,531.5 137,567.3" style="animation-delay:1.50s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.40s" begin="0.50s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r10"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.40s" begin="0.50s" repeatCount="indefinite"/></circle><circle class="dest" cx="137" cy="567.3" r="3.6"/><path id="r11" class="route" d="M82.1,343.9 Q93.1,299.1 133.6,276.9" style="animation-delay:1.65s"/><circle class="runner" r="2.6" opacity="0"><animateMotion dur="3.65s" begin="0.95s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .55 1"><mpath href="#r11"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.85;1" dur="3.65s" begin="0.95s" repeatCount="indefinite"/></circle><circle class="dest" cx="133.6" cy="276.9" r="3.6"/>
+            <circle class="town" data-city="Leeds" cx="216.7" cy="386" r="2.3" style="animation-delay:0.00s"/><circle class="town" data-city="Liverpool" cx="172.4" cy="406.8" r="2.3" style="animation-delay:0.37s"/><circle class="town" data-city="Sheffield" cx="219.1" cy="408.2" r="2.3" style="animation-delay:0.74s"/><circle class="town" data-city="Bristol" cx="184.8" cy="510.2" r="2.3" style="animation-delay:1.11s"/><circle class="town" data-city="Nottingham" cx="228.7" cy="430.8" r="2.3" style="animation-delay:1.48s"/><circle class="town" data-city="Leicester" cx="229.3" cy="447.6" r="2.3" style="animation-delay:1.85s"/><circle class="town" data-city="Southampton" cx="221.1" cy="539" r="2.3" style="animation-delay:2.22s"/><circle class="town" data-city="Plymouth" cx="137" cy="567.3" r="2.3" style="animation-delay:2.59s"/><circle class="town" data-city="Norwich" cx="304.1" cy="447.9" r="2.3" style="animation-delay:2.96s"/><circle class="town" data-city="Swansea" cx="143.1" cy="501.4" r="2.3" style="animation-delay:3.33s"/><circle class="town" data-city="Edinburgh" cx="166.3" cy="272.1" r="2.3" style="animation-delay:3.70s"/><circle class="town" data-city="Aberdeen" cx="199.9" cy="208.8" r="2.3" style="animation-delay:0.07s"/><circle class="town" data-city="Inverness" cx="134.5" cy="191.5" r="2.3" style="animation-delay:0.44s"/>
+            <g class="hub" data-city="London"><circle cx="260.4" cy="507.4" r="16" fill="url(#glow)"/><circle class="core" cx="260.4" cy="507.4" r="4.6" fill="#E31B22"/><circle cx="260.4" cy="507.4" r="1.8" fill="#fff"/></g><g class="hub" data-city="Birmingham"><circle cx="206.2" cy="455.6" r="16" fill="url(#glow)"/><circle class="core" cx="206.2" cy="455.6" r="4.6" fill="#E31B22"/><circle cx="206.2" cy="455.6" r="1.8" fill="#fff"/></g><g class="hub" data-city="Manchester"><circle cx="195.4" cy="403" r="16" fill="url(#glow)"/><circle class="core" cx="195.4" cy="403" r="4.6" fill="#E31B22"/><circle cx="195.4" cy="403" r="1.8" fill="#fff"/></g><g class="hub" data-city="Newcastle"><circle cx="214.6" cy="323.7" r="16" fill="url(#glow)"/><circle class="core" cx="214.6" cy="323.7" r="4.6" fill="#E31B22"/><circle cx="214.6" cy="323.7" r="1.8" fill="#fff"/></g><g class="hub" data-city="Glasgow"><circle cx="133.6" cy="276.9" r="16" fill="url(#glow)"/><circle class="core" cx="133.6" cy="276.9" r="4.6" fill="#E31B22"/><circle cx="133.6" cy="276.9" r="1.8" fill="#fff"/></g><g class="hub" data-city="Cardiff"><circle cx="166.6" cy="508.8" r="16" fill="url(#glow)"/><circle class="core" cx="166.6" cy="508.8" r="4.6" fill="#E31B22"/><circle cx="166.6" cy="508.8" r="1.8" fill="#fff"/></g><g class="hub" data-city="Belfast"><circle cx="82.1" cy="343.9" r="16" fill="url(#glow)"/><circle class="core" cx="82.1" cy="343.9" r="4.6" fill="#E31B22"/><circle cx="82.1" cy="343.9" r="1.8" fill="#fff"/></g>
+          </svg>
+          <span class="absolute hidden -translate-y-1/2 translate-x-3 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:70.52%;top:84.57%">London</span>
+          <span class="absolute hidden -translate-x-[calc(100%+12px)] -translate-y-1/2 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:58.74%;top:75.93%">Birmingham</span>
+          <span class="absolute hidden -translate-x-[calc(100%+6px)] -translate-y-[calc(100%+6px)] items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:56.39%;top:67.17%">Manchester</span>
+          <span class="absolute hidden -translate-y-1/2 translate-x-3 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:60.57%;top:53.95%">Newcastle</span>
+          <span class="absolute hidden -translate-x-[calc(100%+12px)] -translate-y-1/2 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:42.96%;top:46.15%">Glasgow</span>
+          <span class="absolute hidden -translate-y-1/2 translate-x-3 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:50.07%;top:45.35%">Edinburgh</span>
+          <span class="absolute hidden -translate-y-1/2 translate-x-3 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:57.37%;top:34.8%">Aberdeen</span>
+          <span class="absolute hidden -translate-x-[calc(100%+12px)] -translate-y-1/2 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:31.76%;top:57.32%">Belfast</span>
+          <span class="absolute hidden -translate-x-1/2 translate-y-3 items-center rounded-md bg-ink/80 px-2.5 py-1 text-xs font-semibold text-white ring-1 ring-white/25 sm:flex" style="left:50.13%;top:84.8%">Cardiff</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REVIEWS ===================== -->
+    <section id="reviews" class="scroll-mt-20 border-t border-white/10" aria-labelledby="reviews-title">
+      <div class="mx-auto max-w-site px-5 py-24 md:py-32">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end" data-reveal>
+          <div>
+            <p class="label">Customer reviews</p>
+            <h2 id="reviews-title" class="h2 mt-4">Rated 4.9 by<br>drivers on Google</h2>
+          </div>
+          <p class="btn-ghost h-11 self-start hover:bg-transparent hover:text-white hover:ring-white/35 md:self-auto"><svg class="h-4 w-4 text-red"><use href="#i-star"/></svg>4.9 from 292 Google reviews</p>
+        </div>
+        <div class="no-scrollbar -mx-5 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0">
+          <figure class="card flex w-[86%] shrink-0 snap-start flex-col p-7 md:w-auto" data-reveal>
+            <span class="stars flex text-red" aria-label="5 stars"><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg></span>
+            <blockquote class="mt-5 flex-1 text-[15px] text-white/85">“Called very late at night quick to respond and attend to car, Came earlier than initially said. Very polite man takes great pride in what he does. His van and all his tools were immaculate very clean. Problem fixed within minutes beyond happy and very grateful”</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm"><strong class="font-semibold text-white">Christina K</strong> · Google</figcaption>
+          </figure>
+          <figure class="card flex w-[86%] shrink-0 snap-start flex-col p-7 md:w-auto" data-reveal>
+            <span class="stars flex text-red" aria-label="5 stars"><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg></span>
+            <blockquote class="mt-5 flex-1 text-[15px] text-white/85">“Very impressed, blown tyre Sunday morning and was able to replace both fronts within half an hour. Highly recommend and a decent price also!”</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm"><strong class="font-semibold text-white">Anton Lloyd</strong> · Google</figcaption>
+          </figure>
+          <figure class="card flex w-[86%] shrink-0 snap-start flex-col p-7 md:w-auto" data-reveal>
+            <span class="stars flex text-red" aria-label="5 stars"><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg><svg class="h-4 w-4"><use href="#i-star"/></svg></span>
+            <blockquote class="mt-5 flex-1 text-[15px] text-white/85">“KARWAN was exceptional, speedy, polite and efficient. Definitely recommend”</blockquote>
+            <figcaption class="mt-6 border-t border-white/10 pt-4 text-sm"><strong class="font-semibold text-white">Sarah Fulbrook</strong> · Google</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EMERGENCY + FAQ ===================== -->
+    <section id="faq" class="scroll-mt-20 border-t border-white/10 bg-ink-2" aria-labelledby="faq-title">
+      <div class="mx-auto grid max-w-site gap-14 px-5 py-24 md:py-32 lg:grid-cols-12">
+        <div class="lg:col-span-5" data-reveal>
+          <p class="label">Emergency tyre service</p>
+          <h2 class="h2 mt-4">Stranded?<br><span class="text-red">We never close.</span></h2>
+          <p class="mt-6">Call or WhatsApp your location, wherever you are in the UK, with your registration or tyre size. Nothing else is needed. We dispatch the nearest fitter.</p>
+          <ul class="mt-7 grid gap-3 text-sm">
+            <li class="flex gap-3"><svg class="mt-0.5 h-4 w-4 shrink-0 text-red i-draw"><use href="#i-check"/></svg>Motorway breakdowns (we come to safe recovery points)</li>
+            <li class="flex gap-3"><svg class="mt-0.5 h-4 w-4 shrink-0 text-red i-draw"><use href="#i-check"/></svg>Flat tyres in city traffic, car parks and on the driveway</li>
+            <li class="flex gap-3"><svg class="mt-0.5 h-4 w-4 shrink-0 text-red i-draw"><use href="#i-check"/></svg>Blowouts on motorways, A-roads and country lanes</li>
+            <li class="flex gap-3"><svg class="mt-0.5 h-4 w-4 shrink-0 text-red i-draw"><use href="#i-check"/></svg>Commercial vehicle emergencies</li>
+            <li class="flex gap-3"><svg class="mt-0.5 h-4 w-4 shrink-0 text-red i-draw"><use href="#i-check"/></svg>Late-night and early-morning tyre failures</li>
+          </ul>
+        </div>
+        <div class="lg:col-span-7" data-reveal>
+          <p class="label">FAQ</p>
+          <h2 id="faq-title" class="h2 mt-4">Common questions</h2>
+          <div class="mt-8 divide-y divide-white/10 border-y border-white/10">
+            <details class="group py-5" open>
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-semibold text-white">How quickly can you arrive?<svg class="h-5 w-5 shrink-0 text-red transition group-open:rotate-45"><use href="#i-plus"/></svg></summary>
+              <p class="mt-3 text-sm">Fast response, 24/7. We dispatch the nearest fitter and give you an arrival estimate when you call. Rural areas and rush-hour traffic can add a little time.</p>
+            </details>
+            <details class="group py-5">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-semibold text-white">Do you offer 24-hour mobile tyre fitting?<svg class="h-5 w-5 shrink-0 text-red transition group-open:rotate-45"><use href="#i-plus"/></svg></summary>
+              <p class="mt-3 text-sm">Yes. Our service runs through the night, so an early-morning flat or a midnight puncture is handled just like a daytime call.</p>
+            </details>
+            <details class="group py-5">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-semibold text-white">How do I find my tyre size?<svg class="h-5 w-5 shrink-0 text-red transition group-open:rotate-45"><use href="#i-plus"/></svg></summary>
+              <p class="mt-3 text-sm">It's printed on the sidewall, for example 205/55 R16 91V: width, profile, rim size, load index and speed rating. If you can't read it, send your registration and we'll look it up.</p>
+            </details>
+            <details class="group py-5">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-semibold text-white">Do you repair punctures on the spot?<svg class="h-5 w-5 shrink-0 text-red transition group-open:rotate-45"><use href="#i-plus"/></svg></summary>
+              <p class="mt-3 text-sm">Yes. If the tyre is repairable we fix it on-site. If it isn't (sidewall damage, a blowout or low tread), we can replace it with a new or budget tyre straight away.</p>
+            </details>
+            <details class="group py-5">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 font-semibold text-white">What affects the price?<svg class="h-5 w-5 shrink-0 text-red transition group-open:rotate-45"><use href="#i-plus"/></svg></summary>
+              <p class="mt-3 text-sm">Tyre size, brand tier, new or part-worn, tyre type (run-flat, 4×4/SUV and van tyres cost more) and the number of tyres. You'll know the full cost upfront before any work begins.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section id="contact" class="relative isolate scroll-mt-20 overflow-hidden border-t border-white/10" aria-labelledby="cta-title">
+      <img src="assets/images/premium-night-road.webp" alt="" class="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_65%] opacity-60" loading="lazy">
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-ink via-ink/90 to-navy-deep/70"></div>
+      <div class="mx-auto grid max-w-site items-center gap-12 px-5 py-24 md:py-32 lg:grid-cols-2">
+        <div data-reveal>
+          <p class="label">Need help now?</p>
+          <h2 id="cta-title" class="h2 mt-4">24/7 mobile tyre fitting<br><span class="text-red">anywhere in the UK</span></h2>
+          <p class="mt-6 max-w-md">Call now for immediate help, or request a callback and we'll get straight back to you.</p>
+          <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a href="tel:01304350200" class="btn-red"><svg class="h-[18px] w-[18px]"><use href="#i-phone"/></svg>01304 350200</a>
+            <a href="https://wa.me/447842290576" class="btn-ghost"><svg class="h-5 w-5 text-[#25D366]"><use href="#i-whatsapp"/></svg>WhatsApp 07842 290576</a>
+          </div>
+        </div>
+
+        <form id="callback-form" class="rounded-2xl border border-white/10 bg-ink/70 p-6 backdrop-blur sm:p-8" novalidate data-reveal>
+          <h3 class="h-display text-2xl">Request a callback</h3>
+          <p class="mt-1 text-[13px] text-white/60">Sending opens WhatsApp with your details filled in.</p>
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <label for="cb-name" class="text-[13px] font-medium text-white/80">Your name</label>
+              <input id="cb-name" name="name" type="text" autocomplete="name" class="mt-1.5 h-12 w-full rounded-xl border border-white/15 bg-white/5 px-4 text-white focus:border-white/50 focus:outline-none">
+            </div>
+            <div>
+              <label for="cb-phone" class="text-[13px] font-medium text-white/80">Phone number</label>
+              <input id="cb-phone" name="phone" type="tel" autocomplete="tel" class="mt-1.5 h-12 w-full rounded-xl border border-white/15 bg-white/5 px-4 text-white focus:border-white/50 focus:outline-none">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="cb-service" class="text-[13px] font-medium text-white/80">What do you need?</label>
+              <select id="cb-service" name="service" class="mt-1.5 h-12 w-full rounded-xl border border-white/15 bg-ink-3 px-4 text-white focus:border-white/50 focus:outline-none">
+                <option value="">Select a service</option>
+                <option>Mobile Tyre Fitting</option>
+                <option>Emergency Tyre Fitting</option>
+                <option>Mobile Tyre Repair</option>
+                <option>Jump Start</option>
+                <option>Breakdown Recovery</option>
+                <option>Battery Replacement</option>
+                <option>Wheel Nut Removal</option>
+                <option>Part-worn Tyres</option>
+              </select>
+            </div>
+          </div>
+          <p id="cb-error" class="mt-4 hidden text-sm font-medium text-white" role="alert">Please add your name, phone number and the service you need.</p>
+          <button type="submit" class="btn-red mt-6 w-full"><svg class="h-5 w-5"><use href="#i-whatsapp"/></svg>Send request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="relative bg-ink pb-24 text-white/65 md:pb-0">
+    <div class="flex h-[3px]" aria-hidden="true"><span class="flex-1 bg-navy"></span><span class="w-16 bg-white"></span><span class="flex-1 bg-red"></span></div>
+
+    <!-- Contact strip -->
+    <div class="border-b border-white/10">
+      <div class="mx-auto grid max-w-site gap-3 px-5 py-6 md:grid-cols-3">
+        <a href="tel:01304350200" class="foot-tile group">
+          <span class="ping flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-red text-white"><svg class="i-ring h-5 w-5"><use href="#i-phone"/></svg></span>
+          <span class="min-w-0 leading-tight"><span class="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.22em] text-white/55"><span class="h-1.5 w-1.5 rounded-full bg-red"></span>Open now · 24/7</span><span class="h-display mt-1 block text-[22px]">01304 350200</span></span>
+          <svg class="foot-arrow ml-auto h-4 w-4"><use href="#i-arrow"/></svg>
+        </a>
+        <a href="https://wa.me/447842290576" class="foot-tile group">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/5 text-[#25D366] ring-1 ring-white/15"><svg class="h-5 w-5"><use href="#i-whatsapp"/></svg></span>
+          <span class="min-w-0 leading-tight"><span class="block text-[11px] font-medium uppercase tracking-[0.22em] text-white/55">WhatsApp your location</span><span class="h-display mt-1 block text-[22px]">07842 290576</span></span>
+          <svg class="foot-arrow ml-auto h-4 w-4"><use href="#i-arrow"/></svg>
+        </a>
+        <a href="mailto:info@roadmax.co.uk" class="foot-tile group">
+          <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/5 text-white ring-1 ring-white/15"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <span class="min-w-0 leading-tight"><span class="block text-[11px] font-medium uppercase tracking-[0.22em] text-white/55">Email us</span><span class="mt-1 block truncate text-[15px] font-semibold text-white">info@roadmax.co.uk</span></span>
+          <svg class="foot-arrow ml-auto h-4 w-4"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="mx-auto grid max-w-site grid-cols-2 gap-x-6 gap-y-9 px-5 py-11 lg:grid-cols-12 lg:gap-8">
+      <div class="col-span-2 lg:col-span-4">
+        <a href="#top" class="logo-tile inline-block align-top" style="--logo:url(assets/images/roadmax-logo-white.svg)" aria-label="Road Max, back to top"><img class="rm-logo h-auto w-[280px] sm:w-[320px]" src="assets/images/roadmax-logo-white.svg" width="588" height="132" alt="Road Max"></a>
+        <p class="mt-4 max-w-xs text-[13px] leading-relaxed">Mobile tyre fitting, repairs and roadside help anywhere in the UK. Founded in 2010, open 24 hours a day.</p>
+        <a href="#reviews" class="mt-5 inline-flex items-center gap-3 rounded-full bg-white/[0.04] py-1.5 pl-1.5 pr-4 ring-1 ring-white/10 transition hover:ring-white/30">
+          <span class="h-display flex h-8 w-8 items-center justify-center rounded-full bg-white text-[15px] text-ink">4.9</span>
+          <span class="leading-tight"><span class="stars flex text-red"><svg class="h-3 w-3"><use href="#i-star"/></svg><svg class="h-3 w-3"><use href="#i-star"/></svg><svg class="h-3 w-3"><use href="#i-star"/></svg><svg class="h-3 w-3"><use href="#i-star"/></svg><svg class="h-3 w-3"><use href="#i-star"/></svg></span><span class="text-[12px]">292 Google reviews</span></span>
+        </a>
+      </div>
+
+      <nav aria-labelledby="f-services" class="lg:col-span-3">
+        <h2 id="f-services" class="foot-head">Services</h2>
+        <ul class="mt-4 grid gap-2 text-[13px]">
+          <li><a class="foot-link" href="#services">Mobile Tyre Fitting</a></li>
+          <li><a class="foot-link" href="#services">Emergency Tyre Fitting</a></li>
+          <li><a class="foot-link" href="#services">Mobile Tyre Repair</a></li>
+          <li><a class="foot-link" href="#services">Jump Starts</a></li>
+          <li><a class="foot-link" href="#services">Breakdown Recovery</a></li>
+          <li><a class="foot-link" href="#services">Battery Replacement</a></li>
+          <li><a class="foot-link" href="#services">Wheel Nut Removal</a></li>
+          <li><a class="foot-link" href="#services">Part-worn Tyres</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="f-areas" class="order-last col-span-2 lg:order-none lg:col-span-3">
+        <h2 id="f-areas" class="foot-head">Areas we cover</h2>
+        <ul class="mt-4 grid gap-2 text-[13px]">
+          <li><a class="foot-link" href="#coverage"><span class="area">ENG</span>London, Birmingham, Manchester, Leeds</a></li>
+          <li><a class="foot-link" href="#coverage"><span class="area">SCO</span>Glasgow, Edinburgh, Aberdeen</a></li>
+          <li><a class="foot-link" href="#coverage"><span class="area">WAL</span>Cardiff &amp; Swansea</a></li>
+          <li><a class="foot-link" href="#coverage"><span class="area">NI</span>Belfast &amp; beyond</a></li>
+        </ul>
+        <a href="#coverage" class="mt-4 inline-flex items-center gap-1.5 text-[12px] font-medium uppercase tracking-[0.18em] text-red hover:text-white">Check your area<svg class="h-3.5 w-3.5"><use href="#i-arrow"/></svg></a>
+      </nav>
+
+      <nav aria-labelledby="f-company" class="lg:col-span-2">
+        <h2 id="f-company" class="foot-head">Company</h2>
+        <ul class="mt-4 grid gap-2 text-[13px]">
+          <li><a class="foot-link" href="#about">About us</a></li>
+          <li><a class="foot-link" href="#reviews">Reviews</a></li>
+          <li><a class="foot-link" href="#faq">FAQ</a></li>
+          <li><a class="foot-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="border-t border-white/10">
+      <div class="mx-auto flex max-w-site flex-col items-start justify-between gap-3 px-5 py-4 text-[12px] text-white/45 sm:flex-row sm:items-center">
+        <p>© <span data-year>2026</span> Road Max. All rights reserved.</p>
+        <div class="flex items-center gap-5">
+          <a class="hover:text-white" href="#">Privacy Policy</a>
+          <a class="hover:text-white" href="#">Terms &amp; Conditions</a>
+          <a href="#top" aria-label="Back to top" class="group flex h-9 w-9 items-center justify-center rounded-full text-white ring-1 ring-white/20 transition hover:bg-red hover:ring-red"><svg class="h-4 w-4 -rotate-90 transition group-hover:-translate-y-0.5"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile quick-contact bar -->
+  <div class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-white/10 bg-ink/95 p-3 backdrop-blur md:hidden">
+    <a href="tel:01304350200" class="btn-red h-12"><svg class="h-[18px] w-[18px]"><use href="#i-phone"/></svg>Call now</a>
+    <a href="https://wa.me/447842290576" class="btn-ghost h-12"><svg class="h-5 w-5 text-[#25D366]"><use href="#i-whatsapp"/></svg>WhatsApp</a>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
